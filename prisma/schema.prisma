@@ -19,6 +19,8 @@ model Order {
   type       String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  String
 }
 
 model Product {
@@ -27,4 +29,5 @@ model Product {
   amount    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Order     Order[]
 }
